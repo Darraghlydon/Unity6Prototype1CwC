@@ -16,12 +16,16 @@ public class WheelController : MonoBehaviour
     public float acceleration = 500f;
 
     public float brakingForce = 300f;
+
+
+    public float maxTurnAngle = 15f;
     
     public InputAction MoveAction;
     private Vector2 moveInput;
     
     private float currentAcceleration = 0f;
     private float currentBrakingForce = 0f;
+    private float currentTurnAngle = 0f; 
 
     void FixedUpdate()
     {
@@ -46,6 +50,14 @@ public class WheelController : MonoBehaviour
         frontLeftWheel.brakeTorque = currentBrakingForce;
         backRightWheel.motorTorque = currentAcceleration;
         backLeftWheel.motorTorque = currentAcceleration;
+        
+        
+        
+        currentTurnAngle = maxTurnAngle * moveInput.x;
+        
+        frontLeftWheel.steerAngle = currentTurnAngle;
+        frontRightWheel.steerAngle = currentTurnAngle;
+        
         }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

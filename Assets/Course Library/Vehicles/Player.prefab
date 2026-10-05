@@ -552,6 +552,7 @@ GameObject:
   - component: {fileID: 2547391604665163965}
   - component: {fileID: 8674917470380010495}
   - component: {fileID: 3982790760484015493}
+  - component: {fileID: 2838233644363244266}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -663,7 +664,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5294946002197384025}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bd8097bb9a5f3ee4aa13b4d7e58ee330, type: 3}
   m_Name: 
@@ -727,7 +728,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5294946002197384025}
   serializedVersion: 5
-  m_Mass: 2000
+  m_Mass: 1000
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -767,6 +768,74 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 3.1628075, y: 2, z: 5.323662}
   m_Center: {x: 0, y: 1.4060061, z: 0}
+--- !u!114 &2838233644363244266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5294946002197384025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c17865feea0d3c4896b3446b888d613, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WheelController
+  frontLeftWheel: {fileID: 1508225260495613781}
+  frontRightWheel: {fileID: 4123846919176968477}
+  backLeftWheel: {fileID: 2668174519759406256}
+  backRightWheel: {fileID: 5299018904829933313}
+  acceleration: 500
+  brakingForce: 300
+  maxTurnAngle: 15
+  MoveAction:
+    m_Name: Move
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: c9bb4e29-aed4-401c-80e0-9cda6835f6fb
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 2D Vector
+      m_Id: fb88c1f0-5633-4953-ad2b-710f593aefca
+      m_Path: 2DVector
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move
+      m_Flags: 4
+    - m_Name: up
+      m_Id: e2f9ddc0-e5cb-444e-9c4d-23e77e241c3a
+      m_Path: <Keyboard>/w
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move
+      m_Flags: 8
+    - m_Name: down
+      m_Id: 77938b2a-9e8d-4738-8e85-adefcb55fa9b
+      m_Path: <Keyboard>/s
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move
+      m_Flags: 8
+    - m_Name: left
+      m_Id: ed1370e2-e5de-4f34-a6f2-b55c15b2cf2d
+      m_Path: <Keyboard>/a
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move
+      m_Flags: 8
+    - m_Name: right
+      m_Id: d0c1b66a-e780-4797-9bb1-e9b3ec0b17c3
+      m_Path: <Keyboard>/d
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move
+      m_Flags: 8
+    m_Flags: 0
 --- !u!1 &7623139982133697333
 GameObject:
   m_ObjectHideFlags: 0
