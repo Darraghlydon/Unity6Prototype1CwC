@@ -12,6 +12,16 @@ public class WheelController : MonoBehaviour
     [SerializeField]
     WheelCollider backRightWheel;
 
+    
+    [SerializeField]
+    Transform frontLeftWheelTransform;
+    [SerializeField]
+    Transform frontRightWheelTransform;
+    [SerializeField]
+    Transform backLeftWheelTransform;
+    [SerializeField]
+    Transform backRightWheelTransform;
+    
 
     public float acceleration = 500f;
 
@@ -33,11 +43,7 @@ public class WheelController : MonoBehaviour
         currentAcceleration = acceleration*moveInput.y;
         
         
-        if (Input.GetKey(KeyCode.Space))
-        {
-            currentBrakingForce = brakingForce;
-        }
-        else currentBrakingForce = 0f;
+     
         
         
 
@@ -46,10 +52,16 @@ public class WheelController : MonoBehaviour
         frontLeftWheel.motorTorque = currentAcceleration;
         
         
+        if (Input.GetKey(KeyCode.Space))
+        {
+            currentBrakingForce = brakingForce;
+        }
+        else currentBrakingForce = 0f;
+        
         frontRightWheel.brakeTorque = currentBrakingForce;
         frontLeftWheel.brakeTorque = currentBrakingForce;
-        backRightWheel.motorTorque = currentAcceleration;
-        backLeftWheel.motorTorque = currentAcceleration;
+        backRightWheel.brakeTorque = currentBrakingForce;
+        backLeftWheel.motorTorque = currentBrakingForce;
         
         
         
@@ -58,11 +70,27 @@ public class WheelController : MonoBehaviour
         frontLeftWheel.steerAngle = currentTurnAngle;
         frontRightWheel.steerAngle = currentTurnAngle;
         
+        //Update Wheel Meshes
+        UpdateWheel(frontLeftWheel, frontLeftWheelTransform);
+        UpdateWheel(frontRightWheel, frontRightWheelTransform);
+        UpdateWheel(backLeftWheel, backLeftWheelTransform);
+        UpdateWheel(backRightWheel, backRightWheelTransform);
+        
         }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         MoveAction.Enable();
+    }
+
+
+    void UpdateWheel(WheelCollider wheelCol, Transform wheelTransform)
+    {
+        Vector3 position;
+        Quaternion rotation;
+        wheelCol.GetWorldPose(out position, out rotation);
+        wheelTransform.position = position;
+        wheelTransform.rotation = rotation;
     }
 
   
