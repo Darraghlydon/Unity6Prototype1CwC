@@ -111,5 +111,15 @@ public class WheelController : MonoBehaviour
         wheelTransform.rotation = rotation;
     }
 
+    void OnTriggerEnter(Collider Other)
+    {
+        if (Other.CompareTag("Powerup"))
+        {
+            Debug.Log("I hit a powerup");
+
+            acceleration = 5000f;
+        }
+    }
+
   
 }
